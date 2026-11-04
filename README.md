@@ -3,11 +3,14 @@
 > **Ultra-fast, zero-bloat WordPress starter theme powered by Tailwind CSS v4, Alpine.js, and Vite.**
 > Engineered for human developers and optimized for AI coding agents (Cursor, Claude Code, GitHub Copilot, Antigravity).
 
+[![Live Demo](https://img.shields.io/badge/Demo-Live_Preview-emerald?style=flat&logo=googlechrome&logoColor=white)](https://demos.hexleondigital.com/hexleonwp)
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38bdf8.svg)](https://tailwindcss.com/)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3.x-77c1d2.svg)](https://alpinejs.dev/)
 [![Vite](https://img.shields.io/badge/Vite-Bundler-646cff.svg)](https://vitejs.dev/)
 [![WordPress](https://img.shields.io/badge/WordPress-6.2+-21759b.svg)](https://wordpress.org/)
+
+🔗 **Live Demo**: [https://demos.hexleondigital.com/hexleonwp](https://demos.hexleondigital.com/hexleonwp)
 
 ---
 
