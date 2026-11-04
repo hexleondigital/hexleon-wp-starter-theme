@@ -56,6 +56,14 @@ npm run build
 ### 5. Activate theme in WordPress Admin
 Go to **Appearance > Themes** and activate **HexleonWP**.
 
+### 6. Versioning & Releases
+To bump the theme version and create a release tag:
+```bash
+npm version patch   # 1.0.0 -> 1.0.1 (or minor / major)
+git push origin main --tags
+```
+*The `version-sync` hook automatically updates `package.json`, `style.css`, and `functions.php` in lockstep. Pushing a tag triggers the automated GitHub Release packager to generate `hexleonwp.zip`.*
+
 ---
 
 ## 🤖 Building with AI Agents (Cursor, Claude, Copilot)
