@@ -49,6 +49,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[Unreleased]: https://github.com/hexleondigital/hexleonwp/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/hexleondigital/hexleonwp/releases/tag/v1.0.0
+[Unreleased]: https://github.com/hexleondigital/hexleon-wp-starter-theme/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/hexleondigital/hexleon-wp-starter-theme/releases/tag/v1.0.0
 

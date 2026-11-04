@@ -22,6 +22,14 @@
   ],
   "author": "Salinda Lakmal (Hexleon)",
   "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hexleondigital/hexleon-wp-starter-theme.git"
+  },
+  "homepage": "https://demos.hexleondigital.com/hexleonwp",
+  "bugs": {
+    "url": "https://github.com/hexleondigital/hexleon-wp-starter-theme/issues"
+  },
   "dependencies": {
     "@alpinejs/collapse": "^3.15.12",
     "@fontsource/inter": "^5.3.0",

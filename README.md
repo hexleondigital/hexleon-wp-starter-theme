@@ -1,4 +1,4 @@
-# 🚀 HexleonWP — Modern WordPress Starter Theme
+# 🚀 HexleonWP - Tailwind CSS WordPress Starter Theme
 
 > **Ultra-fast, zero-bloat WordPress starter theme powered by Tailwind CSS v4, Alpine.js, and Vite.**
 > Engineered for human developers and optimized for AI coding agents (Cursor, Claude Code, GitHub Copilot, Antigravity).
@@ -32,7 +32,7 @@ Traditional WordPress starter themes are either too bulky (bloated with jQuery, 
 ### 1. Clone into your WordPress themes directory
 ```bash
 cd wp-content/themes
-git clone https://github.com/salindalakmal/hexleonwp.git
+git clone https://github.com/hexleondigital/hexleon-wp-starter-theme.git hexleonwp
 cd hexleonwp
 ```
 

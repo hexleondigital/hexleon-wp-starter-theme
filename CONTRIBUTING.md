@@ -9,7 +9,7 @@ Thank you for your interest in contributing to **HexleonWP**! We welcome bug rep
 1. **Clone the repository** into your local WordPress installation:
    ```bash
    cd wp-content/themes
-   git clone https://github.com/hexleondigital/hexleonwp.git
+   git clone https://github.com/hexleondigital/hexleon-wp-starter-theme.git hexleonwp
    cd hexleonwp
    ```
 
