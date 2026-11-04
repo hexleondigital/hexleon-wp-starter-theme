@@ -51,6 +51,7 @@ jobs:
             --exclude 'package.json' \
             --exclude 'package-lock.json' \
             --exclude '.vite-dev' \
+            --exclude 'COMMANDS.md' \
             --exclude '*.zip'
           
           # Compress theme folder

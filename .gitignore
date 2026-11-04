@@ -26,3 +26,7 @@ Thumbs.db
 # Logs
 logs
 *.log
+
+# Theme Distribution Archives
+*.zip
+hexleonwp.zip

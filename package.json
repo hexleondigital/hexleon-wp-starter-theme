@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "zip": "node scripts/package-zip.js",
     "version": "node scripts/sync-version.js && git add style.css functions.php",
     "version-sync": "node scripts/sync-version.js"
   },
@@ -31,6 +32,7 @@
     "vite": "^8.0.10"
   },
   "devDependencies": {
+    "archiver": "^8.0.0",
     "vite-plugin-live-reload": "^3.1.0"
   }
 }

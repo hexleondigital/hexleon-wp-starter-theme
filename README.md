@@ -53,10 +53,16 @@ npm run build
 ```
 *Compiles minified, hashed assets to `dist/` and updates `dist/.vite/manifest.json`.*
 
-### 5. Activate theme in WordPress Admin
+### 5. Package for WordPress installation (Optional)
+```bash
+npm run zip
+```
+*Compiles production assets and generates a clean `hexleonwp.zip` ready for direct WordPress upload.*
+
+### 6. Activate theme in WordPress Admin
 Go to **Appearance > Themes** and activate **HexleonWP**.
 
-### 6. Versioning & Releases
+### 7. Versioning & Releases
 To bump the theme version and create a release tag:
 ```bash
 npm version patch   # 1.0.0 -> 1.0.1 (or minor / major)

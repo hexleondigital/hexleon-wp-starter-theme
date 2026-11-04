@@ -1,0 +1,44 @@
+name: CI Build & Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-and-lint:
+    name: Build & Lint Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: php-cli
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test production asset build
+        run: npm run build
+
+      - name: Lint all PHP files for syntax errors
+        run: |
+          find . -name "*.php" -not -path "./node_modules/*" -not -path "./vendor/*" -exec php -l {} +
+
+      - name: Verify version consistency across files
+        run: node scripts/sync-version.js
+
