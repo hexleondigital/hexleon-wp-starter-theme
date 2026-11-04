@@ -141,34 +141,8 @@
 					</div>
 				</div>
 
-				<!-- Right Actions (Build PC, Account, Cart) -->
+				<!-- Right Actions (Account, Cart) -->
 				<div class="flex items-center gap-3 sm:gap-4">
-					
-					<!-- Build PC Button -->
-					<a href="<?php echo esc_url( home_url('/custom-pc-build-request/') ); ?>" 
-					 class="hidden md:flex items-center gap-2 px-4 h-11 bg-brand-accent hover:bg-[#438003] rounded-md text-white shadow-sm transition-all text-[13px] font-bold tracking-wide">
-						<span class="material-symbols-outlined text-[18px]">memory</span>
-						<span><?php esc_html_e('Custom PC', 'hexleontech'); ?></span>
-					</a>
-
-					<!-- My Account -->
-					<a href="<?php echo esc_url( get_permalink( get_option('woocommerce_myaccount_page_id') ) ?: home_url('/my-account/') ); ?>" 
-					 class="hidden sm:flex items-center gap-1.5 px-3 h-11 text-gray-300 hover:text-white hover:bg-white/10 rounded-md transition-colors text-[13px] font-medium">
-						<span class="material-symbols-outlined text-[18px]">person</span>
-						<span><?php esc_html_e('Account', 'hexleontech'); ?></span>
-					</a>
-
-					<!-- Cart Dropdown Toggle -->
-					<button type="button" 
-							@click="$store.cart.toggle()" 
-							class="relative flex items-center gap-2 px-3.5 h-11 border border-gray-700 hover:bg-gray-700 hover:border-gray-600 rounded-md shadow-sm text-white text-[13px] font-medium transition-all"
-							aria-label="<?php esc_attr_e('Shopping Cart', 'hexleontech'); ?>">
-						<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
-						<span class="hidden sm:inline"><?php esc_html_e('Cart', 'hexleontech'); ?></span>
-						<span class="hx-cart-count bg-brand-accent text-white text-[10px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full">
-							<?php echo WC()->cart ? esc_html(WC()->cart->get_cart_contents_count()) : '0'; ?>
-						</span>
-					</button>
 
 					<!-- Mobile Menu Toggle -->
 					<button type="button" 

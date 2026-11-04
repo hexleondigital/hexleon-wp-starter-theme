@@ -16,8 +16,6 @@ require get_template_directory() . '/inc/post-types.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/mega-menu-walker.php';
 require get_template_directory() . '/inc/ajax-form.php';
-require get_template_directory() . '/inc/admin-columns.php';
-require get_template_directory() . '/inc/pc-budget-calculator.php';
 
 /**
  * Load WooCommerce compatibility file.
@@ -88,7 +86,4 @@ function hx_styled_pagination( $custom_query = null ) {
  }
 }
 
-/**
- * Load Custom Cart Hooks
- */
-require get_template_directory() . '/inc/cart-hooks.php';
+
