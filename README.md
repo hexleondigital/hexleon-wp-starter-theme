@@ -32,7 +32,7 @@ Traditional WordPress starter themes are either too bulky (bloated with jQuery, 
 ### 1. Clone into your WordPress themes directory
 ```bash
 cd wp-content/themes
-git clone https://github.com/hexleondigital/hexleonwp.git
+git clone https://github.com/salindalakmal/hexleonwp.git
 cd hexleonwp
 ```
 
