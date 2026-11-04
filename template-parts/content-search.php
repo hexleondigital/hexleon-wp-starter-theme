@@ -1,30 +1,34 @@
 <?php
 /**
- * Template part for displaying results in search pages (Using brand variables)
+ * Template part for displaying results in search pages
  *
- * @package hexleontech
+ * @package hexleonwp
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('bg-white border border-gray-200 p-4 flex flex-col justify-between '); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'card p-6 flex flex-col justify-between group' ); ?>>
 	<div>
-		<div class="text-[10px] font-mono text-gray-400 uppercase tracking-wider mb-1.5">
+		<div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
 			<?php echo esc_html( get_post_type() ); ?>
 		</div>
 
-		<header class="entry-header mb-2">
-			<?php the_title( sprintf( '<h2 class="text-sm font-bold text-gray-800 hover:text-brand-primary transition-colors line-clamp-2"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		<header class="entry-header mb-3">
+			<?php the_title( sprintf( '<h2 class="entry-title text-lg font-bold text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-2"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 		</header>
 
-		<div class="entry-summary text-sm text-gray-500 line-clamp-3 mb-3">
+		<div class="entry-summary text-sm text-slate-600 line-clamp-3 leading-relaxed mb-4">
 			<?php the_excerpt(); ?>
 		</div>
 	</div>
 
-	<div class="pt-3 border-t border-gray-100">
-		<a href="<?php echo esc_url( get_permalink() ); ?>" class="text-sm font-bold uppercase tracking-wider text-brand-accent hover:underline">
-			<?php esc_html_e('View', 'hexleontech'); ?> &rarr;
+	<div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+		<a href="<?php echo esc_url( get_permalink() ); ?>" class="text-sm font-semibold text-brand-accent hover:text-brand-accent-hover inline-flex items-center gap-1 transition-colors">
+			<?php esc_html_e( 'View', 'hexleonwp' ); ?> &rarr;
 		</a>
+		<span class="text-xs text-slate-400"><?php echo esc_html( get_the_date() ); ?></span>
 	</div>
 </article>

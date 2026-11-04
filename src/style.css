@@ -3,220 +3,143 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-    --color-brand-primary: #14191c;
-    /* var(--color-brand-primary); */
-    --color-brand-accent: #509904;
-    --color-brand-green: #16a34a;
-    /* WhatsApp / In Stock Green */
-    --color-brand-red: #dc2626;
-    /* Discount Red */
+  /* Brand Colors - Easily customized or modified by AI */
+  --color-brand-primary: #0f172a;
+  --color-brand-accent: #2563eb;
+  --color-brand-accent-hover: #1d4ed8;
 
-    --font-sans:
-        "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-        Arial, sans-serif;
-    --font-mono:
-        "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-        Arial, sans-serif;
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @layer base {
-    body {
-        @apply bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-accent selection:text-white text-sm;
-    }
+  /* Prevent Alpine Flash of Unstyled Content (FOUC) */
+  [x-cloak] {
+    display: none !important;
+  }
+
+  body {
+    background-color: var(--color-slate-50);
+    color: var(--color-slate-800);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-slate-900);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
 }
 
 @layer components {
+  /* Starter Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-accent hover:bg-brand-accent-hover shadow-xs transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
 
-    /* Clean Product & Tech Cards for Light Mode */
-    .tech-card {
-        @apply bg-white border border-slate-200 rounded-md shadow-sm transition-shadow duration-200 hover:shadow-md hover:border-slate-300;
-    }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 hover:border-slate-400 shadow-xs transition-all duration-200 active:scale-[0.98];
+  }
 
-    .tech-card-glass {
-        @apply bg-white border border-slate-200;
-    }
+  /* Starter Card Container */
+  .card {
+    @apply bg-white border border-slate-200 rounded-xl shadow-xs transition-shadow duration-200 hover:shadow-md;
+  }
 
-    .tech-glow-btn {
-        @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold text-sm tracking-wide text-white bg-brand-accent rounded-md shadow-sm hover:bg-[#438003] hover:shadow transition-all duration-200;
-    }
+  /* Form Inputs */
+  .form-input {
+    @apply w-full bg-white border border-slate-300 rounded-lg px-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-all;
+  }
 
-    .tech-outline-btn {
-        @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold text-sm tracking-wide text-slate-700 bg-white border border-slate-300 rounded-md shadow-sm hover:border-slate-400 hover:bg-slate-50 transition-all duration-200;
-    }
+  /* Fallback Form Inputs inside Comment Form */
+  .comment-form textarea:not(.form-input),
+  .comment-form input[type="text"]:not(.form-input),
+  .comment-form input[type="email"]:not(.form-input),
+  .comment-form input[type="url"]:not(.form-input) {
+    @apply w-full bg-white border border-slate-300 rounded-lg px-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-all;
+  }
 
-    .tech-pill {
-        @apply inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-medium bg-slate-100 text-slate-700 border border-slate-200 rounded-full;
-    }
+  /* Comments List & Threading */
+  .comment-list {
+    @apply list-none p-0 m-0 space-y-6;
+  }
 
-    /* WooCommerce Clean Styling */
-    .woocommerce form .form-row {
-        @apply mb-4;
-    }
+  .comment-list .comment {
+    @apply list-none;
+  }
 
-    .woocommerce form .form-row input.input-text,
-    .woocommerce form .form-row textarea,
-    .woocommerce form .form-row select {
-        @apply w-full bg-white border border-slate-300 px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors;
-    }
+  .comment-body {
+    @apply bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-xs transition-shadow hover:shadow-sm;
+  }
 
-    .woocommerce form .form-row label {
-        @apply block text-sm font-bold uppercase tracking-wider text-slate-600 mb-1;
-    }
+  .comment-meta {
+    @apply flex flex-wrap items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100;
+  }
 
-    .woocommerce-Price-amount {
-        @apply font-mono font-bold text-brand-primary block;
-    }
+  .comment-author.vcard {
+    @apply flex items-center gap-3 text-sm font-semibold text-slate-900;
+  }
 
-    .woocommerce-Price-currencySymbol {
-        @apply text-brand-accent mr-0.5 font-bold;
-    }
+  .comment-author .avatar {
+    @apply rounded-full border border-slate-200 shadow-xs shrink-0 object-cover;
+  }
 
-    ins {
-        @apply no-underline;
-    }
+  .comment-author .fn {
+    @apply font-bold text-slate-900 hover:text-brand-accent transition-colors;
+  }
 
-    del .woocommerce-Price-amount {
-        @apply text-slate-400 line-through text-sm font-normal;
-    }
+  .comment-author .fn a {
+    @apply text-slate-900 hover:text-brand-accent transition-colors;
+  }
 
-    del {
-        @apply line-through no-underline;
-    }
+  .comment-author .says {
+    @apply hidden; /* Hide default WordPress 'says:' */
+  }
 
-    ins .woocommerce-Price-amount {
-        @apply text-brand-accent no-underline font-bold;
-    }
+  .comment-metadata {
+    @apply text-xs text-slate-400 font-medium;
+  }
 
-    /* Quantity Steppers */
-    .quantity input.qty {
-        @apply w-16 bg-white border border-slate-300 rounded-md shadow-sm px-2 py-2 text-center text-sm font-mono font-bold text-slate-800 focus:outline-none focus:border-brand-accent;
-        -moz-appearance: textfield;
-        /* Keeps it standard for Firefox, unless they want spin buttons there too */
-    }
+  .comment-metadata a {
+    @apply text-slate-400 hover:text-brand-accent transition-colors;
+  }
 
-    /* Restore Quantity Input Spinners hidden by Tailwind */
-    .quantity input[type='number']::-webkit-inner-spin-button,
-    .quantity input[type='number']::-webkit-outer-spin-button {
-        -webkit-appearance: inner-spin-button !important;
-        opacity: 1 !important;
-        margin-left: 2px;
-    }
+  .comment-content {
+    @apply text-sm sm:text-base text-slate-700 leading-relaxed space-y-3 prose prose-slate prose-sm max-w-none;
+  }
 
-    .quantity input[type='number'] {
-        -moz-appearance: number-input !important;
-    }
+  .comment-content p:last-child {
+    @apply mb-0;
+  }
 
-    /* Star Ratings */
-    .star-rating {
-        @apply overflow-hidden relative h-4 font-mono text-amber-500;
-    }
+  .comment .reply {
+    @apply mt-4 pt-3 flex justify-end border-t border-slate-50;
+  }
 
-    /* Custom Scrollbars */
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-    }
+  .comment-reply-link {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-brand-accent hover:text-white transition-all duration-200;
+  }
 
-    .custom-scrollbar::-webkit-scrollbar-track {
-        @apply bg-slate-100;
-    }
+  /* Nested / Threaded Comments */
+  .comment-list .children {
+    @apply list-none pl-4 sm:pl-8 mt-4 space-y-4 border-l-2 border-slate-200/80;
+  }
 
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        @apply bg-slate-300;
-    }
+  /* Highlight Post Author comments */
+  .bypostauthor > .comment-body {
+    @apply border-brand-accent/40 ring-1 ring-brand-accent/10;
+  }
 
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        @apply bg-brand-accent;
-    }
+  /* WordPress Content Alignments */
+  .alignwide {
+    @apply max-w-6xl mx-auto;
+  }
 
-    /* Fix Quantity Input Height to Match Buttons */
-    .woocommerce-add-to-cart-wrapper .quantity {
-        @apply mb-0;
-    }
-
-    .woocommerce-add-to-cart-wrapper .quantity input.qty {
-        @apply h-[50px] w-16 bg-white border border-slate-300 text-center text-base font-mono font-bold text-brand-primary focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all duration-300;
-    }
-
-    /* Separate Main Image and Thumbnails */
-    .woocommerce-product-gallery .woocommerce-product-gallery__wrapper {
-        /* Removed mb-6, using mt-8 on thumbs instead */
-    }
-
-    .woocommerce-product-gallery .woocommerce-product-gallery__image a {
-        @apply !block !bg-white !border !border-solid !border-slate-200 !p-4 !relative !overflow-hidden;
-
-        @variant sm {
-            @apply !p-6;
-        }
-    }
-
-    .woocommerce-product-gallery .flex-control-thumbs {
-        @apply grid grid-cols-4 gap-3 !mt-8 !p-0 !m-0 list-none;
-    }
-
-    .woocommerce-product-gallery .flex-control-thumbs li {
-        @apply !w-full !float-none border border-slate-100 bg-white transition-colors cursor-pointer;
-    }
-
-    .woocommerce-product-gallery .flex-control-thumbs li:hover,
-    .woocommerce-product-gallery .flex-control-thumbs li img.flex-active {
-        @apply border-brand-accent;
-    }
-
-    .woocommerce-product-gallery .flex-control-thumbs li img {
-        @apply w-full h-auto block m-0 p-1;
-    }
+  .alignfull {
+    @apply w-full max-w-none;
+  }
 }
-
-/* NProgress Override */
-#nprogress .bar {
-    background: var(--color-brand-accent) !important;
-    height: 3px !important;
-}
-
-#nprogress .peg {
-    box-shadow: 0 0 10px var(--color-brand-accent), 0 0 5px var(--color-brand-accent) !important;
-}
-
-/* PC Budget Calculator Palette & Donut Styles */
-:root {
-    --color-part-1: #509904;
-    --color-part-2: #0284c7;
-    --color-part-3: #8b5cf6;
-    --color-part-4: #f59e0b;
-    --color-part-5: #06b6d4;
-    --color-part-6: #ec4899;
-    --color-part-7: #10b981;
-    --color-part-8: #f97316;
-    --color-part-9: #6366f1;
-    --color-part-10: #14b8a6;
-    --color-part-11: #e11d48;
-    --color-part-12: #84cc16;
-    --color-part-remaining: #e2e8f0;
-}
-
-.hx-donut-seg {
-    stroke-width: 26;
-    cursor: pointer;
-    transform-origin: center;
-    transform: rotate(-90deg);
-    transition: stroke-dasharray 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                stroke-dashoffset 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.2s ease,
-                stroke-width 0.2s ease;
-}
-
-.hx-donut-seg.is-active {
-    stroke-width: 30;
-    opacity: 1;
-}
-
-.hx-donut-seg.is-dimmed {
-    opacity: 0.3;
-}
-
-.hx-donut-seg.is-remaining {
-    cursor: default;
-}
-

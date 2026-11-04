@@ -1,0 +1,14 @@
+# Cursor Rules for HexleonWP
+
+You are assisting a developer working on the **HexleonWP** WordPress starter theme.
+
+## Key Architecture
+- **Tailwind CSS v4**: Configured via CSS-first `@theme` in `src/style.css`. There is NO `tailwind.config.js`. Do not generate one.
+- **Alpine.js v3**: Interactivity is handled via Alpine attributes (`x-data`, `x-show`, `x-cloak`, `x-collapse`) or stores in `src/main.js`.
+- **Vite 6/8**: Assets are compiled using `npm run build` to `dist/`. Vite HMR is run using `npm run dev`.
+- **WordPress PHP**:
+  - Always escape outputs with `esc_html__()`, `esc_html_e()`, `esc_attr()`, `esc_url()`, or `wp_kses_post()`.
+  - Always use `'hexleonwp'` as the text domain for all translations.
+  - Template parts are located in `template-parts/`.
+  - Do not hardcode static site paths; use `get_template_directory_uri()` or `get_template_directory()`.
+

@@ -1,13 +1,15 @@
 /*!
 Theme Name: HexleonWP - Starter Theme
-Theme URI: https://hexleondigital.com/
-Author: Salinda Lakmal (Hexleon Digital)
+Theme URI: https://github.com/hexleondigital/hexleonwp
+Author: Salinda Lakmal (Hexleon)
 Author URI: https://salindalakmal.com/
-Description: Ultra-fast, modern WooCommerce theme for PC hardware, custom gaming rigs, components, and electronics. Built with Tailwind CSS v4, Alpine.js, and Vite.
+Description: Ultra-fast, lightweight WordPress starter theme built with Tailwind CSS v4, Alpine.js, and Vite. Designed for modern developers and AI-agent workflows.
 Version: 1.0.0
 Tested up to: 6.7
+Requires at least: 6.2
 Requires PHP: 8.1
 License: GNU General Public License v2 or later
-License URI: LICENSE
-Tags: e-commerce, custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, woocommerce
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: hexleonwp
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, block-styles, full-site-editing
 */

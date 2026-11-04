@@ -1,23 +1,30 @@
 {
+  "name": "hexleonwp",
+  "version": "1.0.0",
+  "description": "Ultra-fast, modern WordPress starter theme built with Tailwind CSS v4, Alpine.js, and Vite.",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "preview": "vite preview"
   },
+  "keywords": [
+    "wordpress",
+    "wordpress-theme",
+    "starter-theme",
+    "tailwindcss",
+    "tailwind-v4",
+    "alpinejs",
+    "vite"
+  ],
+  "author": "Salinda Lakmal (Hexleon)",
+  "license": "GPL-2.0-or-later",
   "dependencies": {
     "@alpinejs/collapse": "^3.15.12",
-    "@fancyapps/ui": "^6.1.14",
     "@fontsource/inter": "^5.3.0",
-    "@fontsource/jetbrains-mono": "^5.3.0",
-    "@fontsource/outfit": "^5.3.0",
-    "@fontsource/playfair-display": "^5.3.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.4",
     "alpinejs": "^3.15.12",
-    "flatpickr": "^4.6.13",
-    "material-symbols": "^0.45.9",
-    "nprogress": "^0.2.0",
-    "swiper": "^12.2.0",
     "tailwindcss": "^4.2.4",
     "vite": "^8.0.10"
   },

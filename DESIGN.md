@@ -1,58 +1,49 @@
-# Hexleon Tech - Design System & UI Guidelines
+# HexleonWP — Design Tokens & UI Guidelines
 
-This document outlines the core design language, aesthetics, and Tailwind configuration for the Hexleon Tech WordPress theme to ensure consistency across all templates and generated code.
+HexleonWP utilizes **Tailwind CSS v4** with native `@theme` directives configured in [src/style.css](file:///d:/Host/Root/hexleonwp/wp-content/themes/hexleonwp/src/style.css).
 
-## 1. Core Aesthetics
-- **Professional & Modern Tech:** The UI feels premium, tactile, and engineered. It combines a clean light foundation with dark contrast blocks for high-impact chrome (Header, Footer, Hero banners).
-- **Subtle Border Radii (`rounded-md`):** We use small, consistent rounded corners across the site. See `header.php` for primary references:
-  - Containers, cards, form inputs, search bars, and primary buttons use `rounded-md` (6px).
-  - Micro-elements, compact filter tags, and small badges use `rounded` or `rounded-sm` (2px–4px).
-  - Circular counters (such as cart item counts) and status pills use `rounded-full`.
-- **Tasteful Depth & Elevation (`shadow-sm`):** Subtle, crisp shadows (`shadow-sm`) are applied to cards, buttons, and input bars to create tactile separation without excessive blur. Heavy drop-shadows are avoided.
-- **Clean Border System:** Keep borders subtle and crisp (`border-slate-200` or `border-gray-300`). Use whitespace and clean background separation (`bg-slate-50` body vs `bg-white` cards).
-- **Light Theme Dominant:** The site primarily uses a clean light mode (`bg-slate-50`), utilizing dark sections (`slate-950` / `brand-primary`) sparingly for navigation chrome, footer, and hero accents.
+---
 
-## 2. Color Palette (Tailwind v4)
-The color system uses Tailwind v4 `@theme` variables located in `src/style.css`.
+## 1. Color System
 
-- **Brand Primary / Site Chrome:** `#14191c` / Tailwind's `slate-950` (Dark, near black with a cool slate tint). Used for the Header, Footer, and dark contrast blocks.
-  - CSS Variable: `--color-header-footer: var(--color-slate-950);` and `--color-brand-primary: #14191c;`
-- **Brand Accent:** `#509904` (Vibrant tech green). Used for call-to-actions, badges, active states, and hover states.
-- **Backgrounds:** `bg-slate-50` for the main body background, `bg-white` for content cards and product containers.
-- **Text Colors:** `text-slate-800` / `text-gray-800` for primary readable text, `text-slate-500` for secondary text and hints.
+The default color tokens provide a clean, modern slate-and-blue foundation:
 
-## 3. Typography
-- **Primary Font (Sans-serif):** `Inter` - Used for all headings, body copy, navigation, and UI elements.
-- **Secondary Font (Monospace):** `JetBrains Mono` - Used for prices, currency amounts, technical specs, stock status, delivery info, and SKUs to give a precision hardware aesthetic.
+```css
+@theme {
+  /* Brand Tokens */
+  --color-brand-primary: #0f172a;       /* Slate 900 - Headings & Brand Chrome */
+  --color-brand-accent: #2563eb;        /* Blue 600 - Primary actions & interactive links */
+  --color-brand-accent-hover: #1d4ed8;  /* Blue 700 - Hover state */
+}
+```
 
-## 4. UI Components
+### Modifying Colors
+To change the brand palette, simply modify the hex codes in `src/style.css` or ask your AI agent:
+> *"Change the brand primary color to deep emerald `#064e3b` and accent to amber `#d97706`."*
 
-### Buttons
-- **Shape:** `rounded-md`.
-- **Elevation:** `shadow-sm`.
-- **Primary Action (Brand Accent):** `bg-brand-accent hover:bg-[#438003] text-white font-bold text-xs sm:text-sm tracking-wide rounded-md shadow-sm transition-all active:scale-[0.98]`.
-- **Secondary / Outline:** `bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 rounded-md shadow-sm transition-all`.
-- **Dark Primary Button:** `bg-brand-primary hover:bg-brand-accent text-white font-bold rounded-md shadow-sm transition-all`.
-- **Reference:** Header "Custom PC" button (`px-4 h-11 bg-brand-accent hover:bg-[#438003] rounded-md text-white shadow-sm`).
+---
 
-### Input Fields & Forms
-- **Shape:** `rounded-md`.
-- **Borders:** `border border-slate-300` or `border-gray-300`.
-- **Background:** `bg-white`.
-- **Focus state:** `focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors`.
-- **Elevation:** Optional `shadow-sm` on primary input groups (e.g. Header live search bar `border border-gray-300 rounded-md bg-white shadow-sm overflow-hidden`).
+## 2. Typography
 
-### Cards & Containers
-- **Shape:** `rounded-md`.
-- **Borders:** `border border-slate-200` or `border-gray-200`.
-- **Elevation:** `shadow-sm` with optional `hover:shadow-md hover:border-slate-300` on interactive cards.
-- **Background:** `bg-white` for primary panels, `bg-slate-50` for nested sub-sections.
+- **Primary Font**: `Inter` (bundled via `@fontsource/inter`, weights: 400, 500, 600, 700)
+- **Fallback Font Stack**: System UI (`system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`)
+- **Monospace Stack**: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace`
 
-### Badges & Status Pills
-- **Counters & Indicators:** `rounded-full` (e.g., cart count `rounded-full`, in-stock badges).
-- **Technical Attribute Tags:** `rounded-md` or `rounded-sm` with light borders (`border border-slate-200 text-xs font-mono`).
+---
 
-## 5. Development Rules
-- Use `rounded-md` as the default border radius across cards, buttons, and form inputs.
-- Maintain CSS variables in `src/style.css` so global tokens propagate consistently.
-- Run `npm run build` from the theme root whenever theme source files or CSS are modified.
+## 3. Core Component Utilities
+
+Defined in `src/style.css`:
+
+- `.btn-primary`: Primary call-to-action button with smooth focus and active scaling.
+- `.btn-outline`: Clean bordered secondary action button.
+- `.card`: White container with crisp borders and hover elevation.
+- `.form-input`: Accessible text, select, and textarea input styling with focus rings.
+
+---
+
+## 4. Alpine.js Interactivity
+
+- **Mobile Navigation**: Toggled via `Alpine.store('nav')` or inline `x-data="{ mobileMenuOpen: false }"`.
+- **Accessible Dropdowns**: Powered by `HexleonWP_Nav_Walker` with hover, click, and keyboard ESC / click-outside support.
+- **FOUC Prevention**: All hidden elements use `x-cloak` to prevent flash of unstyled content before Alpine initializes.

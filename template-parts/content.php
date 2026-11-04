@@ -1,53 +1,45 @@
 <?php
 /**
- * Template part for displaying posts in loops (Using brand variables)
+ * Template part for displaying posts in archives/index
  *
- * @package hexleontech
+ * @package hexleonwp
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('bg-white border border-gray-200 p-5 flex flex-col justify-between '); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'card overflow-hidden flex flex-col justify-between group' ); ?>>
 	<div>
 		<?php if ( has_post_thumbnail() ) : ?>
-			<div class=" overflow-hidden mb-3 bg-gray-100 aspect-video">
-				<a href="<?php echo esc_url( get_permalink() ); ?>">
-					<?php the_post_thumbnail( 'medium_large', array( 'class' => 'w-full h-full object-cover hover:scale-105 transition-transform duration-200' ) ); ?>
+			<div class="aspect-video overflow-hidden bg-slate-100">
+				<a href="<?php echo esc_url( get_permalink() ); ?>" tabindex="-1" aria-hidden="true">
+					<?php the_post_thumbnail( 'hexleonwp-card', array( 'class' => 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300' ) ); ?>
 				</a>
 			</div>
 		<?php endif; ?>
 
-		<div class="text-[11px] font-mono text-gray-400 mb-1">
-			<?php echo esc_html( get_the_date() ); ?>
-		</div>
+		<div class="p-6">
+			<div class="mb-2">
+				<?php hexleonwp_posted_on(); ?>
+			</div>
 
-		<header class="entry-header mb-2">
-			<?php
-			if ( is_singular() ) :
-				the_title( '<h1 class="text-2xl sm:text-3xl font-black font-sans text-brand-primary mb-4">', '</h1>' );
-			else :
-				the_title( '<h2 class="text-base font-bold font-sans text-gray-800 hover:text-brand-primary transition-colors line-clamp-2"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			endif;
-			?>
-		</header>
+			<header class="entry-header mb-3">
+				<?php the_title( '<h2 class="entry-title text-xl font-bold text-slate-900 group-hover:text-brand-accent transition-colors line-clamp-2"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+			</header>
 
-		<div class="entry-content text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">
-			<?php
-			if ( is_singular() ) {
-				the_content();
-			} else {
-				the_excerpt();
-			}
-			?>
+			<div class="entry-summary text-sm text-slate-600 line-clamp-3 leading-relaxed">
+				<?php the_excerpt(); ?>
+			</div>
 		</div>
 	</div>
 
-	<?php if ( ! is_singular() ) : ?>
-		<div class="pt-3 border-t border-gray-100 flex items-center justify-between">
-			<a href="<?php echo esc_url( get_permalink() ); ?>" class="text-sm font-bold uppercase tracking-wider text-brand-accent hover:underline inline-flex items-center gap-1">
-				<?php esc_html_e('Read More', 'hexleontech'); ?> &rarr;
-			</a>
-			<span class="text-[11px] text-gray-400"><?php echo esc_html( get_the_author() ); ?></span>
-		</div>
-	<?php endif; ?>
+	<div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-slate-100 mt-4 pt-4">
+		<a href="<?php echo esc_url( get_permalink() ); ?>" class="text-sm font-semibold text-brand-accent hover:text-brand-accent-hover inline-flex items-center gap-1 transition-colors">
+			<?php esc_html_e( 'Read Article', 'hexleonwp' ); ?>
+			<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+		</a>
+		<span class="text-xs text-slate-400"><?php echo esc_html( get_the_author() ); ?></span>
+	</div>
 </article>

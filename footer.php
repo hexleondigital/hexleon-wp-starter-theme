@@ -1,125 +1,167 @@
 <?php
 /**
- * The template for displaying the Hexleon Tech footer (Using brand variables)
+ * The template for displaying the footer
  *
- * @package hexleontech
+ * @package hexleonwp
  */
 
-if (!defined('ABSPATH')) {
- exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 ?>
 
-<footer class="site-footer bg-brand-primary text-gray-400 border-t border-white/10 relative pt-16 pb-8 lg:pb-12">
-	<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<footer id="colophon" class="site-footer mt-auto bg-slate-900 text-slate-400 border-t border-slate-800/80">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
 
-		<!-- Store Information & Categories Grid -->
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 mb-16">
- 
-			<!-- Branding & Store Bio -->
+		<!-- Multi-column Footer Grid -->
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 mb-12">
+
+			<!-- Column 1: Site Branding & Description (Span 4) -->
 			<div class="lg:col-span-4 space-y-4">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="block">
-					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/logo-hexleontech-dark.svg" 
-					alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" 
-					class="h-12 md:h-16 w-auto object-contain !max-w-[220px]">
-				</a>
-
-				<p class="text-gray-400 text-sm leading-relaxed mt-4">
-					<?php esc_html_e('Sri Lanka\'s trusted shop for budget & high-performance computer parts, custom desktop PCs, gaming accessories, and genuine electronics.', 'hexleontech'); ?>
-				</p>
-
-				<div class="pt-6 mt-6 border-t border-white/5">
-					<span class="text-[11px] uppercase tracking-widest font-bold text-gray-500 block mb-3"><?php esc_html_e('Payment Methods Accepted:', 'hexleontech'); ?></span>
-					<div class="flex flex-wrap items-center gap-2 text-[11px] font-mono text-gray-400">
-						<span class="px-3 py-2 border border-white/5 rounded-sm">Cash on Delivery</span>
-						<!-- <span class="px-3 py-1.5 bg-gray-900 border border-white/5">Bank Transfer</span>
-						<span class="px-3 py-1.5 bg-gray-900 border border-white/5">Visa / Master</span>
-						<span class="px-3 py-1.5 bg-gray-900 border border-white/5">Koko / Mintpay</span> -->
+				<?php if ( has_custom_logo() ) : ?>
+					<div class="site-logo">
+						<?php the_custom_logo(); ?>
 					</div>
+				<?php else : ?>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="inline-block text-xl font-black text-white tracking-tight hover:text-brand-accent transition-colors">
+						<?php bloginfo( 'name' ); ?>
+					</a>
+				<?php endif; ?>
+
+				<?php
+				$description = get_bloginfo( 'description', 'display' );
+				if ( $description || is_customize_preview() ) :
+					?>
+					<p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+						<?php echo esc_html( $description ); ?>
+					</p>
+				<?php else : ?>
+					<p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+						<?php esc_html_e( 'Ultra-fast WordPress starter theme built with Tailwind CSS v4, Alpine.js, and Vite. Designed for developers and AI agent workflows.', 'hexleonwp' ); ?>
+					</p>
+				<?php endif; ?>
+
+				<!-- Tech Stack Pills -->
+				<div class="flex flex-wrap items-center gap-2 pt-2">
+					<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700/60">
+						Tailwind CSS v4
+					</span>
+					<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700/60">
+						Alpine.js v3
+					</span>
+					<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700/60">
+						Vite HMR
+					</span>
 				</div>
 			</div>
 
- 			<!-- Popular Categories -->
+			<!-- Column 2: Navigation Links (Span 3) -->
 			<div class="lg:col-span-3">
-				<h4 class="text-sm font-bold text-white tracking-wider uppercase mb-6">
-					<?php esc_html_e('Shop', 'hexleontech'); ?>
-				</h4>
-				<nav class="text-sm text-gray-400 [&_ul]:space-y-3.5 [&_a]:transition-colors [&_a:hover]:text-white [&_.current-menu-item>a]:text-white">
+				<h3 class="text-xs font-bold text-white uppercase tracking-wider mb-4">
+					<?php esc_html_e( 'Navigation', 'hexleonwp' ); ?>
+				</h3>
+				<nav aria-label="<?php esc_attr_e( 'Footer Navigation', 'hexleonwp' ); ?>">
 					<?php
-					if (has_nav_menu('footer-shop')) {
-						wp_nav_menu(array(
-							'theme_location' => 'footer-shop',
+					if ( has_nav_menu( 'footer-menu' ) ) {
+						wp_nav_menu( array(
+							'theme_location' => 'footer-menu',
 							'container'      => false,
-							'menu_class'     => '',
+							'menu_class'     => 'space-y-2.5 text-sm [&_a]:text-slate-400 [&_a:hover]:text-white [&_a]:transition-colors [&_a]:block',
 							'fallback_cb'    => false,
-						));
+						) );
 					} else {
-						echo '<ul class="space-y-3.5"><li><a href="' . esc_url(admin_url('nav-menus.php')) . '" class="hover:text-white transition-colors">' . esc_html__('Setup Footer Categories Menu', 'hexleontech') . '</a></li></ul>';
+						// Clean starter fallback links when menu is not yet assigned
+						?>
+						<ul class="space-y-2.5 text-sm">
+							<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-slate-400 hover:text-white transition-colors"><?php esc_html_e( 'Home', 'hexleonwp' ); ?></a></li>
+							<li><a href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>" class="text-slate-400 hover:text-white transition-colors"><?php esc_html_e( 'Assign Footer Menu', 'hexleonwp' ); ?> &rarr;</a></li>
+						</ul>
+						<?php
 					}
 					?>
 				</nav>
 			</div>
 
- 			<!-- Quick Links & Customer Care -->
+			<!-- Column 3: Resources & Docs (Span 2) -->
 			<div class="lg:col-span-2">
-				<h4 class="text-sm font-bold text-white tracking-wider uppercase mb-6">
-					<?php esc_html_e('Support', 'hexleontech'); ?>
-				</h4>
-				<nav class="text-sm text-gray-400 [&_ul]:space-y-3.5 [&_a]:transition-colors [&_a:hover]:text-white [&_.current-menu-item>a]:text-white">
-					<?php
-					if (has_nav_menu('footer-support')) {
-						wp_nav_menu(array(
-							'theme_location' => 'footer-support',
-							'container'      => false,
-							'menu_class'     => '',
-							'fallback_cb'    => false,
-						));
-					} else {
-						echo '<ul class="space-y-3.5"><li><a href="' . esc_url(admin_url('nav-menus.php')) . '" class="hover:text-white transition-colors">' . esc_html__('Setup Footer Support Menu', 'hexleontech') . '</a></li></ul>';
-					}
-					?>
-				</nav>
-			</div>
-
- 			<!-- Showroom & Hotline Contact -->
-			<div class="lg:col-span-3">
-				<h4 class="text-sm font-bold text-white tracking-wider uppercase mb-6">
-					<?php esc_html_e('Store & Hotline', 'hexleontech'); ?>
-				</h4>
-				<ul class="space-y-4 text-sm text-gray-400">
-					<li class="flex items-start gap-3">
-						<span class="material-symbols-outlined text-[18px] text-gray-500 shrink-0 mt-0.5">location_on</span>
-						<span class="leading-relaxed"><?php echo esc_html( get_theme_mod( 'hx_company_address', 'Watinapaha, Minuwangoda' ) ); ?></span>
-					</li>
-					<li class="flex items-center gap-3">
-						<span class="material-symbols-outlined text-[18px] text-gray-500 shrink-0">call</span>
-						<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', get_theme_mod( 'hx_company_phone', '+94 76 230 2957' ) ) ); ?>" class="hover:text-white font-mono font-bold text-white transition-colors">
-							<?php echo esc_html( get_theme_mod( 'hx_company_phone', '+94 76 230 2957' ) ); ?>
+				<h3 class="text-xs font-bold text-white uppercase tracking-wider mb-4">
+					<?php esc_html_e( 'Resources', 'hexleonwp' ); ?>
+				</h3>
+				<ul class="space-y-2.5 text-sm">
+					<li>
+						<a href="https://tailwindcss.com/docs" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1">
+							<span>Tailwind CSS</span>
+							<svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
 						</a>
 					</li>
-					<li class="flex items-center gap-3">
-						<span class="material-symbols-outlined text-[18px] text-gray-500 shrink-0">mail</span>
-						<a href="mailto:<?php echo esc_attr( sanitize_email( get_theme_mod( 'hx_company_email', 'support@hexleontech.com' ) ) ); ?>" class="hover:text-white transition-colors">
-							<?php echo esc_html( get_theme_mod( 'hx_company_email', 'support@hexleontech.com' ) ); ?>
+					<li>
+						<a href="https://alpinejs.dev/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1">
+							<span>Alpine.js</span>
+							<svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
 						</a>
 					</li>
-					<li class="text-[12px] text-gray-500 pt-2 font-mono">
-						<?php echo esc_html( get_theme_mod( 'hx_store_hours', 'Mon - Sat: 9:00 AM - 6:00 PM (Sun: Closed)' ) ); ?>
+					<li>
+						<a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1">
+							<span>Vite Bundler</span>
+							<svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+						</a>
+					</li>
+					<li>
+						<a href="https://developer.wordpress.org/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1">
+							<span>WordPress Docs</span>
+							<svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+						</a>
 					</li>
 				</ul>
 			</div>
- 		</div>
 
- 		<!-- Bottom Copyright -->
-		<div class="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/10 text-sm text-gray-500 gap-4 mt-8">
-			<p>&copy; <?php echo date_i18n( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'All rights reserved.', 'hexleontech' ); ?> Website by <a href="https://hexleondigital.com/" target="_blank" rel="noopener noreferrer">Hexleon Digital</a></p>
-			<p><?php esc_html_e('Prices in Sri Lankan Rupees (LKR). Islandwide Delivery Available.', 'hexleontech'); ?></p>
+			<!-- Column 4: AI & Developer Community (Span 3) -->
+			<div class="lg:col-span-3">
+				<h3 class="text-xs font-bold text-white uppercase tracking-wider mb-4">
+					<?php esc_html_e( 'AI-First Theme', 'hexleonwp' ); ?>
+				</h3>
+				<p class="text-sm text-slate-400 leading-relaxed mb-4">
+					<?php esc_html_e( 'Prompt your AI agent (Cursor, Claude, Copilot) to design, customize, or generate page templates instantly.', 'hexleonwp' ); ?>
+				</p>
+				<a href="https://github.com/hexleondigital/hexleonwp" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700/80 text-white text-xs font-semibold border border-slate-700 transition-colors">
+					<svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+					<span>View on GitHub</span>
+				</a>
+			</div>
+
 		</div>
- 
- 	</div>
+
+		<!-- Bottom Colophon / Copyright Bar -->
+		<div class="border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+			<p>
+				&copy; <?php echo date_i18n( 'Y' ); ?> <span class="text-slate-300 font-medium"><?php bloginfo( 'name' ); ?></span>. <?php esc_html_e( 'All rights reserved.', 'hexleonwp' ); ?>
+			</p>
+
+			<div class="flex items-center gap-6">
+				<p>
+					<?php
+					printf(
+						/* translators: %s: Author link */
+						esc_html__( 'Starter theme by %s', 'hexleonwp' ),
+						'<a href="https://hexleondigital.com/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors font-medium">Hexleon Digital</a>'
+					);
+					?>
+				</p>
+
+				<!-- Back to top button (Alpine.js) -->
+				<button type="button" 
+						onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" 
+						class="inline-flex items-center gap-1 text-slate-400 hover:text-white transition-colors cursor-pointer"
+						aria-label="<?php esc_attr_e( 'Scroll to top', 'hexleonwp' ); ?>">
+					<span><?php esc_html_e( 'Top', 'hexleonwp' ); ?></span>
+					<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+				</button>
+			</div>
+		</div>
+
+	</div>
 </footer>
 
 <?php wp_footer(); ?>
-
 </body>
 </html>
